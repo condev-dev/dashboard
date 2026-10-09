@@ -1,4 +1,4 @@
-# 📊 Milan Dashboard – v1.0.0
+# 📊 Milan Dashboard
 
 **Milan Dashboard** – A complete, fully responsive admin panel for a sportswear store, built with **HTML, CSS and Vanilla JavaScript**.
 Designed with **clean spacing, real RTL layout, smooth micro-interactions and full dark mode**, perfect for portfolio showcase.
