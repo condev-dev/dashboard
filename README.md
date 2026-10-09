@@ -5,6 +5,8 @@ Designed with **clean spacing, real RTL layout, smooth micro-interactions and fu
 
 > ⚡ **Portfolio-Level Project** – Showcasing Senior Front-End expertise in **RTL interfaces, dashboard layouts, data visualization and reusable component design**.
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-8d43f5?style=for-the-badge&logo=vercel&logoColor=white)](https://dashboard-nine-bice-87.vercel.app/)
+
 ---
 
 ## 🛠 Tech Stack
@@ -83,6 +85,12 @@ Designed with **clean spacing, real RTL layout, smooth micro-interactions and fu
 *Off-canvas sidebar and stacked cards, down to a 390px viewport.*
 
 <img src="https://raw.githubusercontent.com/condev-dev/dashboard/main/assets/img/Mobile-Demo.png" width="320" alt="Mobile">
+
+---
+
+### 🔗 Live Demo
+
+**[dashboard-nine-bice-87.vercel.app](https://dashboard-nine-bice-87.vercel.app/)**
 
 </div>
 
