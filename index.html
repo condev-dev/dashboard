@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#8d43f5">
+  <title>داشبورد میلان</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('milan-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body data-page="dashboard">
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="app-shell">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="appSidebar">
+    <div class="brand">
+      <a class="brand-logo" href="index.html" aria-label="داشبورد میلان"><img src="assets/logo.svg" alt="MILAN Sport Wear"></a>
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="بستن منو">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <label class="sidebar-search">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" placeholder="جستجو…" aria-label="جستجو در پنل">
+    </label>
+
+    <nav class="main-nav" aria-label="منوی اصلی">
+      <a class="nav-item" href="index.html" data-page="dashboard"><i class="fas fa-th-large"></i><span>داشبورد</span></a>
+      <a class="nav-item" href="sales.html" data-page="sales"><i class="fas fa-chart-line"></i><span>فروش</span></a>
+      <a class="nav-item" href="products.html" data-page="products"><i class="fas fa-tshirt"></i><span>محصولات</span></a>
+      <a class="nav-item" href="orders.html" data-page="orders"><i class="fas fa-shopping-bag"></i><span>سفارشات</span></a>
+      <a class="nav-item" href="customers.html" data-page="customers"><i class="fas fa-users"></i><span>مشتریان</span></a>
+      <a class="nav-item" href="reports.html" data-page="reports"><i class="fas fa-chart-pie"></i><span>گزارشات</span></a>
+      <a class="nav-item" href="empty.html" data-page="empty"><i class="fas fa-boxes-stacked"></i><span>انبار</span></a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="user-card">
+        <span class="user-avatar">
+          <img src="assets/avatar.svg" alt="">
+          <i class="avatar-status" aria-hidden="true"></i>
+        </span>
+        <span class="user-meta">
+          <strong>مدیر فروشگاه</strong>
+          <small id="todayLabel">امروز</small>
+        </span>
+      </div>
+      <div class="foot-social">
+        <span class="foot-credit">طراحی و توسعه <b>ConDev</b></span>
+        <span class="foot-actions">
+          <a class="foot-icon" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i class="fab fa-instagram"></i></a>
+          <a class="foot-icon" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="وب‌سایت ConDev" aria-label="وب‌سایت ConDev"><i class="fas fa-globe"></i></a>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content-area">
+      <div class="page">
+
+        <header class="topbar">
+          <div class="topbar-main">
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-controls="appSidebar" aria-expanded="false">
+              <i class="fas fa-bars"></i>
+            </button>
+            <span class="topbar-badge"><i class="fas fa-th-large"></i></span>
+            <div class="topbar-text">
+              <h1>داشبورد</h1>
+              <p>نمای کلی فروشگاه میلان</p>
+            </div>
+          </div>
+          <div class="topbar-side">
+            <span class="pill"><i class="far fa-calendar"></i><span class="num" id="todayPill">امروز</span></span>
+            <a class="icon-btn notification" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i>۳</i><i class="fas fa-bell"></i></a>
+            <button class="icon-btn theme-btn" id="themeBtn" type="button" data-theme-toggle data-tip="تغییر پوسته" aria-label="تغییر پوسته" aria-pressed="false">
+              <i class="fas fa-moon i-moon"></i>
+              <i class="fas fa-sun i-sun"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="dashboard-grid">
+
+          <section class="sales-total card">
+            <a class="more" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="وب‌سایت ConDev" aria-label="وب‌سایت ConDev"><i class="fas fa-up-right-from-square"></i></a>
+            <div class="blob"></div>
+            <span class="eyebrow">مجموع کل فروش</span>
+            <strong class="big-number num">۱۲,۸۶۰,۰۰۰ <span class="unit">تومان</span></strong>
+            <div class="growth-pill">
+              <b><i class="fas fa-arrow-up"></i> ۱۸٪</b>
+              <span>نسبت به ماه قبل</span>
+            </div>
+            <a class="report-btn" href="reports.html">گزارش کامل فروش <i class="fas fa-arrow-left"></i></a>
+          </section>
+
+          <section class="stats card">
+            <div class="stat">
+              <div class="stat-icon green"><i class="fas fa-user-friends"></i></div>
+              <div>
+                <span>مشتریان</span>
+                <strong class="num">۴,۲۸۶</strong>
+                <small>نفر</small>
+              </div>
+              <div class="stat-trend">
+                <em class="up"><i class="fas fa-arrow-up"></i> ۹٪</em>
+                <label>نسبت به ماه قبل</label>
+              </div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon blue"><i class="fas fa-shopping-cart"></i></div>
+              <div>
+                <span>سفارشات امروز</span>
+                <strong class="num">۳۲</strong>
+                <small>سفارش</small>
+              </div>
+              <div class="stat-trend">
+                <em class="up"><i class="fas fa-arrow-up"></i> ۱۴٪</em>
+                <label>نسبت به دیروز</label>
+              </div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon purple"><i class="fas fa-wallet"></i></div>
+              <div>
+                <span>فروش این ماه</span>
+                <strong class="num">۲۸۶,۸۰۰,۰۰۰</strong>
+                <small>تومان</small>
+              </div>
+              <div class="stat-trend">
+                <em class="up"><i class="fas fa-arrow-up"></i> ۱۴٪</em>
+                <label>نسبت به ماه قبل</label>
+              </div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon pink"><i class="fas fa-shopping-basket"></i></div>
+              <div>
+                <span>فروش امروز</span>
+                <strong class="num">۱۲,۸۶۰,۰۰۰</strong>
+                <small>تومان</small>
+              </div>
+              <div class="stat-trend">
+                <em class="down"><i class="fas fa-arrow-down"></i> ۶٪</em>
+                <label>نسبت به دیروز</label>
+              </div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon orange"><i class="fas fa-hand-holding-dollar"></i></div>
+              <div>
+                <span>بستانکاری</span>
+                <strong class="num">۶,۴۸۰,۰۰۰</strong>
+                <small>تومان</small>
+              </div>
+              <div class="stat-trend">
+                <em class="down"><i class="fas fa-arrow-down"></i> ۶٪</em>
+                <label>نسبت به ماه قبل</label>
+              </div>
+            </div>
+          </section>
+
+          <section class="activity card">
+            <h3>آخرین فعالیت‌ها</h3>
+            <div class="timeline">
+              <article>
+                <time>۱۰:۳۰</time><i class="dot red"></i>
+                <div><b>فاکتور جدید ثبت شد</b><span>فاکتور شماره ۱۴-۰۲-۳۱</span></div>
+                <div class="activity-icon red"><i class="fas fa-file-invoice"></i></div>
+              </article>
+              <article>
+                <time>۰۹:۱۵</time><i class="dot purple"></i>
+                <div><b>سفارش جدید دریافت شد</b><span>سفارش شماره ۱۳۵۸</span></div>
+                <div class="activity-icon purple"><i class="fas fa-shopping-bag"></i></div>
+              </article>
+              <article>
+                <time>دیروز</time><i class="dot green"></i>
+                <div><b>پرداخت مشتری</b><span>فاکتور شماره ۱۴-۰۲-۱۰</span></div>
+                <div class="activity-icon green"><i class="fas fa-check-circle"></i></div>
+              </article>
+              <article>
+                <time>دیروز</time><i class="dot orange"></i>
+                <div><b>موجودی محصول بروزرسانی شد</b><span>کفش نایک ایر زوم</span></div>
+                <div class="activity-icon orange"><i class="fas fa-boxes"></i></div>
+              </article>
+            </div>
+            <a class="card-link" href="orders.html">مشاهده همه <i class="fas fa-arrow-left"></i></a>
+          </section>
+
+          <section class="smart card">
+            <div class="smart-copy">
+              <h2>مدیریت هوشمند<br>فروشگاه شما</h2>
+              <p>با گزارش‌های دقیق، تصمیم‌های<br>بهتر و فروش بیشتر داشته باشید</p>
+              <a class="smart-btn" href="reports.html">مشاهده گزارش‌ها <i class="fas fa-arrow-left"></i></a>
+            </div>
+            <img src="assets/shoe.svg" alt="کفش ورزشی">
+          </section>
+
+          <section class="sales-chart card">
+            <div class="card-head">
+              <h3>عملکرد فروش</h3>
+              <div class="chart-badge">
+                <span class="dot-indicator"></span>
+                <span>هفته آخر</span>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="salesChart" aria-label="نمودار عملکرد فروش هفته آخر" role="img"></canvas>
+            </div>
+          </section>
+
+          <section class="category card">
+            <h3>فروش بر اساس دسته بندی</h3>
+            <div class="donut-wrap">
+              <div class="donut">
+                <div>
+                  <span>کل فروش</span>
+                  <strong class="num">۲۸۶.۸</strong>
+                  <small>میلیون تومان</small>
+                </div>
+              </div>
+              <ul>
+                <li><i class="c1"></i><span>لباس ورزشی</span><b class="num">۳۴٪</b></li>
+                <li><i class="c2"></i><span>کفش ورزشی</span><b class="num">۲۸٪</b></li>
+                <li><i class="c3"></i><span>اکسسوری</span><b class="num">۱۷٪</b></li>
+                <li><i class="c4"></i><span>کیف و کوله</span><b class="num">۸٪</b></li>
+                <li><i class="c5"></i><span>سایر</span><b class="num">۵٪</b></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="quick card">
+            <h3>دسترسی سریع</h3>
+            <div class="quick-row">
+              <a href="products.html"><i class="q-blue fas fa-plus-circle"></i><span>افزودن محصول</span></a>
+              <a href="sales.html"><i class="q-green fas fa-file-invoice"></i><span>ثبت فاکتور</span></a>
+              <a href="customers.html"><i class="q-purple fas fa-user-plus"></i><span>افزودن مشتری</span></a>
+              <a href="https://www.condev.ir/" target="_blank" rel="noopener"><i class="q-orange fas fa-coins"></i><span>ثبت هزینه</span></a>
+              <a href="reports.html"><i class="q-pink fas fa-chart-bar"></i><span>گزارش فروش</span></a>
+              <a href="empty.html"><i class="q-gray fas fa-boxes-stacked"></i><span>گزارش انبار</span></a>
+              <a href="https://www.condev.ir/" target="_blank" rel="noopener"><i class="q-gray fas fa-cog"></i><span>سفارشی سازی</span></a>
+              <a href="https://www.instagram.com/con.dev" target="_blank" rel="noopener"><i class="q-pink fas fa-headset"></i><span>پشتیبانی</span></a>
+            </div>
+          </section>
+
+          <section class="financial card">
+            <h3>وضعیت مالی</h3>
+            <div class="fin-tiles">
+              <div class="fin-tile debt">
+                <span class="fin-tile-icon"><i class="fas fa-arrow-trend-up"></i></span>
+                <span class="fin-tile-label">بدهکاری‌ها</span>
+                <strong class="num">۲۵,۶۰۰,۰۰۰</strong>
+                <small>تومان</small>
+              </div>
+              <div class="fin-tile credit">
+                <span class="fin-tile-icon"><i class="fas fa-arrow-trend-down"></i></span>
+                <span class="fin-tile-label">بستانکاری‌ها</span>
+                <strong class="num">۱۸,۹۰۰,۰۰۰</strong>
+                <small>تومان</small>
+              </div>
+            </div>
+
+            <div class="fin-split" role="img" aria-label="۵۸ درصد بدهکاری و ۴۲ درصد بستانکاری">
+              <span class="debt"></span>
+              <span class="credit"></span>
+            </div>
+            <div class="fin-legend">
+              <span><i class="debt"></i>بدهکاری ۵۸٪</span>
+              <span><i class="credit"></i>بستانکاری ۴۲٪</span>
+            </div>
+
+            <a class="card-link" href="reports.html">مشاهده جزئیات مالی <i class="fas fa-arrow-left"></i></a>
+          </section>
+
+          <section class="products card">
+            <div class="products-head">
+              <h3>پرفروش ترین محصولات</h3>
+              <a href="https://www.condev.ir/" target="_blank" rel="noopener">۳۰ روز گذشته <i class="fas fa-chevron-down"></i></a>
+            </div>
+            <ol>
+              <li><span class="rank num">۱</span><img src="assets/product1.svg" alt=""><div><b>تی شرت ورزشی آدیداس</b><small>فروش: ۱۸۵ عدد</small></div></li>
+              <li><span class="rank num">۲</span><img src="assets/product2.svg" alt=""><div><b>کفش نایک ایر زوم</b><small>فروش: ۱۲۰ عدد</small></div></li>
+              <li><span class="rank num">۳</span><img src="assets/product3.svg" alt=""><div><b>شلوار ورزشی پوما</b><small>فروش: ۱۱۵ عدد</small></div></li>
+            </ol>
+            <a class="card-link" href="products.html">مشاهده همه محصولات <i class="fas fa-arrow-left"></i></a>
+          </section>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="vendor/js/chart.umd.min.js"></script>
+<script src="vendor/js/app.js"></script>
+<script>
+  (() => {
+    'use strict';
+
+    const canvas = document.getElementById('salesChart');
+    if (!canvas || !window.Chart) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const labels = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه'];
+    const raw = [42, 58, 72, 61, 89, 105, 28];
+    const data = raw.map((v, i, a) => {
+      if (i === 0) return (a[0] + a[1]) / 2;
+      if (i === a.length - 1) return (a[i - 1] + a[i]) / 2;
+      return (a[i - 1] + a[i] + a[i + 1]) / 3;
+    });
+
+    const token = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    let chart = null;
+
+    function build() {
+      if (chart) { chart.destroy(); chart = null; }
+
+      const brand = token('--brand') || '#8d43f5';
+      const ctx = canvas.getContext('2d');
+      const gradient = ctx.createLinearGradient(0, 0, 0, 230);
+      gradient.addColorStop(0, 'rgba(141, 67, 245, 0.32)');
+      gradient.addColorStop(0.55, 'rgba(141, 67, 245, 0.10)');
+      gradient.addColorStop(1, 'rgba(141, 67, 245, 0.01)');
+
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            data,
+            borderColor: brand,
+            borderWidth: 2.5,
+            backgroundColor: gradient,
+            pointBackgroundColor: brand,
+            pointBorderColor: token('--surface') || '#ffffff',
+            pointBorderWidth: 2,
+            pointRadius: 2.5,
+            pointHoverRadius: 6,
+            pointHoverBackgroundColor: brand,
+            pointHoverBorderColor: token('--surface') || '#ffffff',
+            pointHoverBorderWidth: 2,
+            tension: 0.45,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: reduced ? false : { duration: 700 },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: token('--surface') || '#ffffff',
+              titleColor: token('--ink') || '#191d31',
+              bodyColor: token('--ink') || '#191d31',
+              borderColor: token('--brand-line') || 'rgba(141,67,245,.25)',
+              borderWidth: 1.5,
+              cornerRadius: 12,
+              padding: 10,
+              displayColors: false,
+              callbacks: {
+                label: item => App.toFa(Math.round(item.parsed.y)) + ' میلیون تومان'
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 120,
+              ticks: {
+                font: { family: 'Vazirmatn, sans-serif', size: 9, weight: '400' },
+                color: token('--faint') || '#a5abbd',
+                padding: 4,
+                stepSize: 20,
+                callback: value => App.toFa(value) + 'M'
+              },
+              grid: { color: token('--line') || 'rgba(0,0,0,.035)', drawBorder: false, lineWidth: 0.8 },
+              border: { display: false }
+            },
+            x: {
+              ticks: {
+                font: { family: 'Vazirmatn, sans-serif', size: 8, weight: '400' },
+                color: token('--faint') || '#a5abbd',
+                padding: 4
+              },
+              grid: { display: false },
+              border: { display: false }
+            }
+          },
+          interaction: { intersect: false, mode: 'index' }
+        }
+      });
+    }
+
+    build();
+
+    new MutationObserver(build).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+  })();
+</script>
+</body>
+</html>

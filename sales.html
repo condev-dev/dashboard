@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#8d43f5">
+  <title>ثبت فروش | داشبورد میلان</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('milan-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sales.css">
+</head>
+<body data-page="sales">
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="app-shell">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="appSidebar">
+    <div class="brand">
+      <a class="brand-logo" href="index.html" aria-label="داشبورد میلان"><img src="assets/logo.svg" alt="MILAN Sport Wear"></a>
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="بستن منو">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <label class="sidebar-search">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" placeholder="جستجو…" aria-label="جستجو در پنل">
+    </label>
+
+    <nav class="main-nav" aria-label="منوی اصلی">
+      <a class="nav-item" href="index.html" data-page="dashboard"><i class="fas fa-th-large"></i><span>داشبورد</span></a>
+      <a class="nav-item" href="sales.html" data-page="sales"><i class="fas fa-chart-line"></i><span>فروش</span></a>
+      <a class="nav-item" href="products.html" data-page="products"><i class="fas fa-tshirt"></i><span>محصولات</span></a>
+      <a class="nav-item" href="orders.html" data-page="orders"><i class="fas fa-shopping-bag"></i><span>سفارشات</span></a>
+      <a class="nav-item" href="customers.html" data-page="customers"><i class="fas fa-users"></i><span>مشتریان</span></a>
+      <a class="nav-item" href="reports.html" data-page="reports"><i class="fas fa-chart-pie"></i><span>گزارشات</span></a>
+      <a class="nav-item" href="empty.html" data-page="empty"><i class="fas fa-boxes-stacked"></i><span>انبار</span></a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="user-card">
+        <span class="user-avatar">
+          <img src="assets/avatar.svg" alt="">
+          <i class="avatar-status" aria-hidden="true"></i>
+        </span>
+        <span class="user-meta">
+          <strong>مدیر فروشگاه</strong>
+          <small id="todayLabel">امروز</small>
+        </span>
+      </div>
+      <div class="foot-social">
+        <span class="foot-credit">طراحی و توسعه <b>ConDev</b></span>
+        <span class="foot-actions">
+          <a class="foot-icon" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i class="fab fa-instagram"></i></a>
+          <a class="foot-icon" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="وب‌سایت ConDev" aria-label="وب‌سایت ConDev"><i class="fas fa-globe"></i></a>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content-area">
+      <div class="page">
+
+        <header class="topbar">
+          <div class="topbar-main">
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-controls="appSidebar" aria-expanded="false">
+              <i class="fas fa-bars"></i>
+            </button>
+            <span class="topbar-badge"><i class="fas fa-receipt"></i></span>
+            <div class="topbar-text">
+              <h1>ثبت فروش</h1>
+              <p>فاکتور جدید را تکمیل و ثبت کنید</p>
+            </div>
+          </div>
+          <div class="topbar-side">
+            <span class="pill"><i class="far fa-calendar"></i><span class="num" id="todayPill">امروز</span></span>
+            <a class="icon-btn notification" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i>۳</i><i class="fas fa-bell"></i></a>
+            <button class="icon-btn theme-btn" id="themeBtn" type="button" data-theme-toggle data-tip="تغییر پوسته" aria-label="تغییر پوسته" aria-pressed="false">
+              <i class="fas fa-moon i-moon"></i>
+              <i class="fas fa-sun i-sun"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="shell">
+
+          <div class="flow">
+
+            <section class="panel">
+              <div class="panel-head">
+                <div class="panel-title">
+                  <span class="dot-icon"><i class="far fa-user"></i></span>
+                  <div>
+                    <h2>مشخصات فاکتور</h2>
+                    <p>اطلاعات مشتری و نوع فروش</p>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="grid-fields">
+                  <div class="field span-2">
+                    <label for="customerName">نام مشتری <span class="req">*</span></label>
+                    <div class="control">
+                      <i class="far fa-user"></i>
+                      <input id="customerName" type="text" placeholder="نام و نام خانوادگی" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="saleNumber">شماره فروش</label>
+                    <div class="control">
+                      <i class="fas fa-hashtag"></i>
+                      <input id="saleNumber" class="num" type="text" placeholder="۱۴۰۴۰۲۱۴۰۱" autocomplete="off">
+                      <button type="button" class="in-btn" id="genNumber"><i class="fas fa-wand-magic-sparkles"></i> ساخت</button>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="saleDate">تاریخ فاکتور</label>
+                    <div class="control">
+                      <i class="far fa-calendar-alt"></i>
+                      <input id="saleDate" class="num" type="text" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="field span-4">
+                    <label>نوع فروش</label>
+                    <div class="segmented" role="group" aria-label="نوع فروش">
+                      <button type="button" class="seg active" data-type="in-person"><i class="fas fa-store"></i> حضوری</button>
+                      <button type="button" class="seg" data-type="online"><i class="fas fa-globe"></i> آنلاین</button>
+                      <span class="seg-glider" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <div class="panel-title">
+                  <span class="dot-icon gold"><i class="fas fa-basket-shopping"></i></span>
+                  <div>
+                    <h2>سبد کالا</h2>
+                    <p>اقلام این فاکتور را وارد کنید</p>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-soft" data-add><i class="fas fa-plus"></i><span>افزودن کالا</span></button>
+              </div>
+
+              <div class="table-wrap" id="tableWrap">
+                <div class="thead">
+                  <div>ردیف</div>
+                  <div>نام کالا</div>
+                  <div>تعداد</div>
+                  <div>قیمت واحد</div>
+                  <div>جمع</div>
+                  <div>مکان تامین</div>
+                  <div><span class="sr">عملیات</span></div>
+                </div>
+                <div class="tbody" id="tableBody"></div>
+              </div>
+
+              <div class="blank" id="emptyState">
+                <span class="blank-art"><i class="fas fa-box-open"></i></span>
+                <strong>هنوز کالایی ثبت نشده</strong>
+                <span class="blank-hint">برای شروع روی افزودن کالا بزنید</span>
+                <button type="button" class="btn btn-soft" data-add><i class="fas fa-plus"></i><span>افزودن اولین کالا</span></button>
+              </div>
+
+              <button type="button" class="add-more" id="addRowFooter" data-add><i class="fas fa-plus"></i> افزودن ردیف جدید</button>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <div class="panel-title">
+                  <span class="dot-icon coral"><i class="fas fa-align-right"></i></span>
+                  <div>
+                    <h2>توضیحات</h2>
+                    <p>یادداشت اختیاری روی فاکتور</p>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="note">
+                  <textarea id="notes" maxlength="500" placeholder="نکته‌ای درباره این فروش بنویسید..."></textarea>
+                  <span class="note-count num" id="counter">۰/۵۰۰</span>
+                </div>
+              </div>
+            </section>
+
+            <div class="form-actions">
+              <span class="actions-hint"><i class="far fa-keyboard"></i> میانبر ثبت: Ctrl + Enter</span>
+              <div class="actions-btns">
+                <button type="button" class="btn btn-ghost" id="cancelBtn"><i class="fas fa-rotate-left"></i><span>انصراف</span></button>
+                <button type="button" class="btn btn-solid btn-lg" id="submitBtn"><i class="fas fa-check"></i><span>ثبت فروش</span></button>
+              </div>
+            </div>
+
+          </div>
+
+          <aside class="checkout">
+            <div class="sticky">
+
+              <div class="receipt">
+                <div class="receipt-head">
+                  <span class="rh-title"><i class="fas fa-file-invoice-dollar"></i> خلاصه پرداخت</span>
+                  <span class="chip num" id="itemsChip">۰ قلم</span>
+                </div>
+
+                <div class="rec-row">
+                  <span>مبلغ کل</span>
+                  <b class="num" id="totalAmount">۰</b>
+                </div>
+
+                <div class="rec-row">
+                  <span>تخفیف مبلغی</span>
+                  <span class="mini">
+                    <input id="discountAmount" class="num" type="text" inputmode="numeric" placeholder="۰">
+                    <i>تومان</i>
+                  </span>
+                </div>
+
+                <div class="rec-row">
+                  <span>تخفیف درصدی</span>
+                  <span class="mini narrow">
+                    <input id="discountPercent" class="num" type="text" inputmode="numeric" placeholder="۰">
+                    <i>٪</i>
+                  </span>
+                </div>
+
+                <div class="percent-chips">
+                  <button type="button" class="pc num" data-pc="5">۵٪</button>
+                  <button type="button" class="pc num" data-pc="10">۱۰٪</button>
+                  <button type="button" class="pc num" data-pc="15">۱۵٪</button>
+                  <button type="button" class="pc num" data-pc="20">۲۰٪</button>
+                </div>
+
+                <div class="rec-row saving hidden" id="savingRow">
+                  <span><i class="fas fa-tag"></i> مجموع تخفیف</span>
+                  <b class="num" id="savingAmount">۰</b>
+                </div>
+
+                <div class="tear"><span></span><span></span></div>
+
+                <div class="rec-final">
+                  <span>مبلغ قابل پرداخت</span>
+                  <strong id="finalAmount"><span class="num">۰</span> <small>تومان</small></strong>
+                </div>
+              </div>
+
+              <div class="panel pay">
+                <div class="panel-head">
+                  <div class="panel-title">
+                    <span class="dot-icon"><i class="fas fa-credit-card"></i></span>
+                    <div>
+                      <h2>روش پرداخت</h2>
+                      <p>نحوه تسویه این فاکتور</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pay-grid">
+                  <label class="pay-opt active" data-method="cash">
+                    <input type="radio" name="payment" value="نقدی" checked>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>نقدی</span>
+                    <em class="tick"><i class="fas fa-check"></i></em>
+                  </label>
+                  <label class="pay-opt" data-method="credit">
+                    <input type="radio" name="payment" value="اعتباری">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>اعتباری</span>
+                    <em class="tick"><i class="fas fa-check"></i></em>
+                  </label>
+                  <label class="pay-opt" data-method="pos">
+                    <input type="radio" name="payment" value="کارت خوان">
+                    <i class="fas fa-credit-card"></i>
+                    <span>کارت خوان</span>
+                    <em class="tick"><i class="fas fa-check"></i></em>
+                  </label>
+                  <label class="pay-opt" data-method="portal">
+                    <input type="radio" name="payment" value="درگاه">
+                    <i class="fas fa-globe"></i>
+                    <span>درگاه</span>
+                    <em class="tick"><i class="fas fa-check"></i></em>
+                  </label>
+                  <label class="pay-opt" data-method="transfer">
+                    <input type="radio" name="payment" value="پرداخت به حساب">
+                    <i class="fas fa-building-columns"></i>
+                    <span>واریز به حساب</span>
+                    <em class="tick"><i class="fas fa-check"></i></em>
+                  </label>
+                  <label class="pay-opt" data-method="cart2cart">
+                    <input type="radio" name="payment" value="کارت به کارت">
+                    <i class="fas fa-right-left"></i>
+                    <span>کارت به کارت</span>
+                    <em class="tick"><i class="fas fa-check"></i></em>
+                  </label>
+                </div>
+
+                <div class="pay-detail" id="paymentDetails">
+                  <div class="detail" data-detail="cash">
+                    <i class="fas fa-circle-check ok"></i>
+                    <span>مبلغ به صورت نقدی دریافت می‌شود</span>
+                  </div>
+                  <div class="detail hidden" data-detail="credit">
+                    <i class="fas fa-clock warn"></i>
+                    <span>پرداخت در سررسید تعیین شده</span>
+                  </div>
+                  <div class="detail hidden" data-detail="pos">
+                    <i class="fas fa-qrcode"></i>
+                    <label id="posLabel">دستگاه</label>
+                    <span class="sel" id="posSelect" data-value="pos-1" data-options="pos-1:کارتخوان فروشگاه|pos-2:کارتخوان شعبه|pos-3:کارتخوان سیار"></span>
+                    <button type="button" class="ghost-add" id="addPosBtn" data-tip="افزودن کارتخوان" aria-label="افزودن کارتخوان"><i class="fas fa-plus"></i></button>
+                  </div>
+                  <div class="detail hidden" data-detail="portal">
+                    <i class="fas fa-globe info"></i>
+                    <span>پرداخت از طریق درگاه اینترنتی</span>
+                  </div>
+                  <div class="detail column hidden" data-detail="transfer">
+                    <div class="detail-top">
+                      <i class="fas fa-building-columns"></i>
+                      <label>حساب مقصد</label>
+                      <button type="button" class="ghost-add" id="addBankBtn" aria-label="افزودن حساب"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="bank-list" id="bankList">
+                      <span class="bank-tag">ملی <span class="num">۶۰۳۷۹۹</span><i class="fas fa-xmark" data-remove-bank></i></span>
+                      <span class="bank-tag">صادرات <span class="num">۶۲۱۹۸۶</span><i class="fas fa-xmark" data-remove-bank></i></span>
+                    </div>
+                  </div>
+                  <div class="detail hidden" data-detail="cart2cart">
+                    <i class="fas fa-right-left"></i>
+                    <label for="cardNumber">شماره کارت</label>
+                    <input id="cardNumber" class="num" type="text" inputmode="numeric" placeholder="۶۰۳۷ ۹۹۱۶ ۲۱۹۸ ۶۵۴۳" maxlength="19">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="dock">
+  <div class="dock-info">
+    <span>مبلغ قابل پرداخت</span>
+    <strong class="num" id="dockAmount">۰ تومان</strong>
+  </div>
+  <div class="dock-acts">
+    <button type="button" class="dock-sum" id="sheetBtn" aria-label="خلاصه پرداخت"><i class="fas fa-receipt"></i></button>
+    <button type="button" class="dock-btn" id="dockSubmit"><i class="fas fa-check"></i> <span>ثبت فروش</span></button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="خلاصه پرداخت">
+  <div class="sheet-grip"></div>
+  <div id="sheetHost"></div>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <h3 id="modalTitle"><i class="fas fa-plus"></i> <span id="modalHeading">افزودن</span></h3>
+  <p id="modalHint">اطلاعات را وارد کنید</p>
+  <div class="field">
+    <label for="modalF1" id="modalL1">عنوان</label>
+    <div class="control">
+      <i class="fas fa-pen"></i>
+      <input id="modalF1" type="text" autocomplete="off">
+    </div>
+  </div>
+  <div class="field" id="modalRow2">
+    <label for="modalF2" id="modalL2">شماره</label>
+    <div class="control">
+      <i class="fas fa-hashtag"></i>
+      <input id="modalF2" class="num" type="text" inputmode="numeric" autocomplete="off">
+    </div>
+  </div>
+  <div class="modal-acts">
+    <button type="button" class="btn btn-ghost" id="modalCancel">انصراف</button>
+    <button type="button" class="btn btn-solid" id="modalOk"><i class="fas fa-check"></i> تایید</button>
+  </div>
+</div>
+
+<script src="vendor/js/app.js"></script>
+<script>
+  (() => {
+    'use strict';
+
+    const $ = id => document.getElementById(id);
+    const { toFa, digits, group, money, shortDate, toast } = window.App;
+
+    const tableBody = $('tableBody');
+    const tableWrap = $('tableWrap');
+    const emptyState = $('emptyState');
+    const addFooter = $('addRowFooter');
+    const itemsChip = $('itemsChip');
+    const totalEl = $('totalAmount');
+    const finalEl = $('finalAmount');
+    const dockAmount = $('dockAmount');
+    const savingRow = $('savingRow');
+    const savingAmount = $('savingAmount');
+    const discountAmount = $('discountAmount');
+    const discountPercent = $('discountPercent');
+    const notes = $('notes');
+    const counter = $('counter');
+    const cardNumber = $('cardNumber');
+    const scrim = $('scrim');
+    const sheet = $('sheet');
+    const sheetHost = $('sheetHost');
+    const modal = $('modal');
+    const receipt = document.querySelector('.receipt');
+    const stickyHost = document.querySelector('.sticky');
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function pulse(el) {
+      if (reduced || !el) return;
+      el.classList.remove('bump');
+      void el.offsetWidth;
+      el.classList.add('bump');
+    }
+
+    function countTo(el, target) {
+      const from = Number(el.dataset.val || 0);
+      el.dataset.val = target;
+      if (reduced || from === target) {
+        el.textContent = money(target);
+        return;
+      }
+      const start = performance.now();
+      const span = 480;
+      const tick = now => {
+        const p = Math.min(1, (now - start) / span);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = money(from + (target - from) * eased);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    /* ---------- custom select ---------- */
+    function parseOptions(sel) {
+      return (sel.dataset.options || '').split('|').filter(Boolean).map(part => {
+        const idx = part.indexOf(':');
+        return idx === -1 ? { value: part, label: part } : { value: part.slice(0, idx), label: part.slice(idx + 1) };
+      });
+    }
+
+    function setSelectValue(sel, value, silent) {
+      const opt = sel._opts.find(o => o.value === value);
+      sel.dataset.value = value;
+      const labelEl = sel.querySelector('.sel-btn > span');
+      if (labelEl) labelEl.textContent = opt ? opt.label : '';
+      if (sel._items) sel._items.forEach(it => it.classList.toggle('is-on', it.dataset.value === value));
+      if (!silent) sel.dispatchEvent(new CustomEvent('selchange', { detail: { value, label: opt ? opt.label : '' } }));
+    }
+
+    function buildSelect(sel) {
+      if (sel._built) return;
+      sel._built = true;
+      sel._opts = parseOptions(sel);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'sel-btn';
+      btn.setAttribute('aria-haspopup', 'listbox');
+      btn.setAttribute('aria-expanded', 'false');
+      const label = document.createElement('span');
+      const chevron = document.createElement('i');
+      chevron.className = 'fas fa-chevron-down';
+      btn.append(label, chevron);
+      const menu = document.createElement('div');
+      menu.className = 'sel-menu';
+      menu.setAttribute('role', 'listbox');
+      sel._items = sel._opts.map(opt => {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'sel-opt';
+        item.setAttribute('role', 'option');
+        item.dataset.value = opt.value;
+        const check = document.createElement('i');
+        check.className = 'fas fa-check';
+        const text = document.createElement('span');
+        text.textContent = opt.label;
+        item.append(check, text);
+        menu.appendChild(item);
+        return item;
+      });
+      sel.append(btn, menu);
+      setSelectValue(sel, sel.dataset.value || (sel._opts[0] && sel._opts[0].value) || '', true);
+    }
+
+    function positionMenu(sel) {
+      const menu = sel.querySelector('.sel-menu');
+      const btn = sel.querySelector('.sel-btn');
+      const rect = btn.getBoundingClientRect();
+      const mh = menu.offsetHeight || 220;
+      const openUp = rect.top > mh + 12 && innerHeight - rect.bottom < mh + 12;
+      menu.classList.toggle('up', openUp);
+      menu.style.minWidth = Math.max(rect.width, 172) + 'px';
+      const left = Math.max(8, Math.min(rect.left, innerWidth - menu.offsetWidth - 8));
+      menu.style.left = left + 'px';
+      menu.style.top = openUp ? Math.max(8, rect.top - menu.offsetHeight - 7) + 'px' : rect.bottom + 7 + 'px';
+    }
+
+    function setCursor(sel, item) {
+      sel._items.forEach(it => it.classList.remove('cursor'));
+      if (!item) return;
+      item.classList.add('cursor');
+      const menu = sel.querySelector('.sel-menu');
+      const target = item.offsetTop - menu.clientHeight / 2 + item.offsetHeight / 2;
+      menu.scrollTop = Math.max(0, Math.min(target, menu.scrollHeight - menu.clientHeight));
+    }
+
+    function openSelect(sel) {
+      if (!sel._built) buildSelect(sel);
+      closeSelects(sel);
+      sel.classList.add('open');
+      sel.querySelector('.sel-btn').setAttribute('aria-expanded', 'true');
+      positionMenu(sel);
+      sel.querySelector('.sel-menu').classList.add('show');
+      const current = sel._items.find(it => it.dataset.value === sel.dataset.value);
+      setCursor(sel, current || sel._items[0]);
+    }
+
+    function closeSelects(except) {
+      document.querySelectorAll('.sel.open').forEach(sel => {
+        if (sel === except) return;
+        sel.classList.remove('open');
+        sel.querySelector('.sel-btn').setAttribute('aria-expanded', 'false');
+        sel.querySelector('.sel-menu').classList.remove('show');
+      });
+    }
+
+    function pickOption(sel, item) {
+      setSelectValue(sel, item.dataset.value);
+      closeSelects();
+      sel.querySelector('.sel-btn').focus();
+    }
+
+    function addSelectOption(sel, value, label) {
+      buildSelect(sel);
+      sel._opts.push({ value, label });
+      const menu = sel.querySelector('.sel-menu');
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'sel-opt';
+      item.setAttribute('role', 'option');
+      item.dataset.value = value;
+      const check = document.createElement('i');
+      check.className = 'fas fa-check';
+      const text = document.createElement('span');
+      text.textContent = label;
+      item.append(check, text);
+      menu.appendChild(item);
+      sel._items.push(item);
+      setSelectValue(sel, value);
+    }
+
+    document.addEventListener('pointerdown', e => {
+      if (!e.target.closest('.sel')) closeSelects();
+    });
+
+    document.addEventListener('click', e => {
+      const sel = e.target.closest('.sel');
+      if (!sel) return;
+      if (!sel._built) buildSelect(sel);
+      const opt = e.target.closest('.sel-opt');
+      if (opt) { pickOption(sel, opt); return; }
+      if (e.target.closest('.sel-btn')) {
+        if (sel.classList.contains('open')) closeSelects();
+        else openSelect(sel);
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const open = document.querySelector('.sel.open');
+      const activeSel = document.activeElement && document.activeElement.closest('.sel');
+      if (!open && activeSel) {
+        if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) {
+          e.preventDefault();
+          if (!activeSel._built) buildSelect(activeSel);
+          openSelect(activeSel);
+        }
+        return;
+      }
+      if (!open || !open._items || !open._items.length) return;
+      const items = open._items;
+      const idx = items.findIndex(it => it.classList.contains('cursor'));
+      const last = items.length - 1;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setCursor(open, items[idx === -1 || idx === last ? 0 : idx + 1]);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setCursor(open, items[idx <= 0 ? last : idx - 1]);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        setCursor(open, items[0]);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        setCursor(open, items[last]);
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (idx > -1) pickOption(open, items[idx]);
+      } else if (e.key === 'Escape' || e.key === 'Tab') {
+        closeSelects();
+      }
+    });
+
+    window.addEventListener('scroll', e => {
+      if (!e.target.closest || !e.target.closest('.sel-menu')) closeSelects();
+    }, { capture: true, passive: true });
+
+    window.addEventListener('resize', () => closeSelects());
+
+    /* ---------- cart rows ---------- */
+    const rows = () => Array.from(tableBody.querySelectorAll('.row'));
+
+    function syncMeta() {
+      const list = rows();
+      list.forEach((row, i) => {
+        row.querySelector('[data-index]').textContent = toFa(i + 1);
+      });
+      const count = list.length;
+      if (itemsChip.dataset.count !== String(count)) pulse(itemsChip);
+      itemsChip.dataset.count = count;
+      itemsChip.textContent = `${toFa(count)} قلم`;
+      emptyState.classList.toggle('hidden', count > 0);
+      addFooter.classList.toggle('hidden', count === 0);
+      tableWrap.classList.toggle('hidden', count === 0);
+    }
+
+    function lineTotal(row) {
+      const qty = Number(digits(row.querySelector('[data-qty]').value)) || 0;
+      const price = Number(digits(row.querySelector('[data-price]').value)) || 0;
+      return qty * price;
+    }
+
+    function recalc() {
+      let total = 0;
+      rows().forEach(row => {
+        const line = lineTotal(row);
+        total += line;
+        const cell = row.querySelector('[data-line]');
+        const next = money(line);
+        if (cell.textContent !== next) {
+          cell.textContent = next;
+          pulse(cell);
+        }
+      });
+
+      countTo(totalEl, total);
+
+      const byAmount = Number(digits(discountAmount.value)) || 0;
+      const byPercent = Number(digits(discountPercent.value)) || 0;
+
+      let cut = 0;
+      if (byPercent > 0) cut = total * Math.min(byPercent, 100) / 100;
+      else if (byAmount > 0) cut = byAmount;
+      cut = Math.min(cut, total);
+
+      const final = Math.max(0, Math.round(total - cut));
+
+      savingRow.classList.toggle('hidden', cut <= 0);
+      savingAmount.textContent = money(cut);
+
+      countTo(finalEl.querySelector('.num'), final);
+      dockAmount.textContent = `${money(final)} تومان`;
+
+      document.querySelectorAll('.pc').forEach(chip => {
+        chip.classList.toggle('on', byPercent > 0 && Number(chip.dataset.pc) === byPercent);
+      });
+    }
+
+    function addRow() {
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = `
+        <div class="c-idx" data-label="ردیف"><span class="num" data-index>۱</span></div>
+        <div class="c-name" data-label="نام کالا">
+          <span class="name-wrap">
+            <input type="text" placeholder="نام کالا را بنویسید" autocomplete="off">
+            <a class="scan" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="اسکن بارکد" aria-label="اسکن بارکد"><i class="fas fa-barcode"></i></a>
+          </span>
+        </div>
+        <div class="c-qty" data-label="تعداد">
+          <span class="stepper">
+            <button type="button" class="step" data-step="-1" aria-label="کاهش">&minus;</button>
+            <input class="num" data-qty type="text" inputmode="numeric" value="۱">
+            <button type="button" class="step" data-step="1" aria-label="افزایش">+</button>
+          </span>
+        </div>
+        <div class="c-price" data-label="قیمت واحد"><input class="cell-input num" data-price type="text" inputmode="numeric" placeholder="۰"></div>
+        <div class="c-line" data-label="جمع"><span class="num" data-line>۰</span></div>
+        <div class="c-place" data-label="مکان تامین">
+          <span class="sel" data-place data-value="انبار" data-options="انبار:انبار|رگال:رگال"></span>
+        </div>
+        <div class="c-del"><button type="button" class="del" aria-label="حذف ردیف"><i class="far fa-trash-can"></i></button></div>
+      `;
+
+      tableBody.appendChild(row);
+      buildSelect(row.querySelector('.sel'));
+      syncMeta();
+      recalc();
+
+      const qty = row.querySelector('[data-qty]');
+      const price = row.querySelector('[data-price]');
+
+      qty.addEventListener('input', function () {
+        this.value = toFa(digits(this.value));
+        recalc();
+      });
+
+      qty.addEventListener('blur', function () {
+        if (!digits(this.value) || Number(digits(this.value)) < 1) this.value = '۱';
+        recalc();
+      });
+
+      price.addEventListener('input', function () {
+        const raw = digits(this.value);
+        this.value = raw ? toFa(group(raw)) : '';
+        recalc();
+      });
+
+      row.querySelectorAll('.step').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const step = Number(btn.dataset.step);
+          const current = Number(digits(qty.value)) || 0;
+          qty.value = toFa(Math.max(1, current + step));
+          recalc();
+        });
+      });
+
+      row.querySelector('.del').addEventListener('click', () => {
+        row.classList.add('out');
+        setTimeout(() => {
+          row.remove();
+          syncMeta();
+          recalc();
+        }, 220);
+      });
+
+      row.querySelector('.c-name input').focus({ preventScroll: true });
+      row.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    }
+
+    document.addEventListener('click', event => {
+      if (event.target.closest('[data-add]')) addRow();
+    });
+
+    $('genNumber').addEventListener('click', () => {
+      const stamp = String(Date.now()).slice(-6);
+      $('saleNumber').value = toFa('1404' + stamp);
+      toast('شماره فروش ساخته شد');
+    });
+
+    discountAmount.addEventListener('input', function () {
+      const raw = digits(this.value);
+      this.value = raw ? toFa(group(raw)) : '';
+      if (raw && Number(raw) > 0) discountPercent.value = '';
+      recalc();
+    });
+
+    discountPercent.addEventListener('input', function () {
+      let raw = digits(this.value);
+      if (raw && Number(raw) > 100) raw = '100';
+      this.value = raw ? toFa(raw) : '';
+      if (raw && Number(raw) > 0) discountAmount.value = '';
+      recalc();
+    });
+
+    document.querySelectorAll('.pc').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const value = chip.dataset.pc;
+        const active = chip.classList.contains('on');
+        discountPercent.value = active ? '' : toFa(value);
+        if (!active) discountAmount.value = '';
+        recalc();
+      });
+    });
+
+    /* ---------- segmented ---------- */
+    const segWrap = document.querySelector('.segmented');
+    const segs = Array.from(document.querySelectorAll('.seg'));
+
+    function moveGlider() {
+      const active = segWrap.querySelector('.seg.active');
+      if (!active) return;
+      segWrap.style.setProperty('--glide-w', `${active.offsetWidth}px`);
+      segWrap.style.setProperty('--glide-x', `${active.offsetLeft}px`);
+    }
+
+    segs.forEach(seg => {
+      seg.addEventListener('click', () => {
+        segs.forEach(s => s.classList.remove('active'));
+        seg.classList.add('active');
+        moveGlider();
+      });
+    });
+
+    notes.addEventListener('input', () => {
+      const len = notes.value.length;
+      counter.textContent = `${toFa(len)}/۵۰۰`;
+      counter.classList.toggle('near', len > 450);
+    });
+
+    document.querySelectorAll('[data-note]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const text = chip.dataset.note;
+        const current = notes.value.trim();
+        if (current.includes(text)) return;
+        notes.value = current ? `${current} - ${text}` : text;
+        notes.dispatchEvent(new Event('input'));
+      });
+    });
+
+    /* ---------- payment ---------- */
+    const payOpts = Array.from(document.querySelectorAll('.pay-opt'));
+    const details = Array.from(document.querySelectorAll('.detail'));
+
+    function showDetail(method) {
+      details.forEach(detail => {
+        const match = detail.dataset.detail === method;
+        detail.classList.toggle('hidden', !match);
+        if (match && !reduced) {
+          detail.style.animation = 'none';
+          void detail.offsetWidth;
+          detail.style.animation = '';
+        }
+      });
+    }
+
+    payOpts.forEach(opt => {
+      opt.querySelector('input').addEventListener('change', function () {
+        if (!this.checked) return;
+        payOpts.forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        showDetail(opt.dataset.method);
+      });
+    });
+
+    /* ---------- modal ---------- */
+    let modalDone = null;
+
+    function openModal(config) {
+      $('modalHeading').textContent = config.title;
+      $('modalHint').textContent = config.hint;
+      $('modalL1').textContent = config.label1;
+      $('modalF1').value = config.value1 || '';
+      $('modalRow2').classList.toggle('hidden', !config.label2);
+      if (config.label2) {
+        $('modalL2').textContent = config.label2;
+        $('modalF2').value = config.value2 || '';
+      }
+      modalDone = config.done;
+      scrim.classList.add('show');
+      modal.classList.add('show');
+      setTimeout(() => $('modalF1').focus(), 120);
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+      if (!sheet.classList.contains('show')) scrim.classList.remove('show');
+      modalDone = null;
+    }
+
+    $('modalCancel').addEventListener('click', closeModal);
+
+    $('modalOk').addEventListener('click', () => {
+      const first = $('modalF1').value.trim();
+      const second = $('modalF2').value.trim();
+      if (!first) {
+        const box = $('modalF1').closest('.control');
+        box.classList.add('shake');
+        setTimeout(() => box.classList.remove('shake'), 520);
+        return;
+      }
+      if (modalDone) modalDone(first, second);
+      closeModal();
+    });
+
+    const bankList = $('bankList');
+
+    function bindRemove(icon) {
+      icon.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.closest('.bank-tag').remove();
+      });
+    }
+
+    document.querySelectorAll('[data-remove-bank]').forEach(bindRemove);
+
+    $('addBankBtn').addEventListener('click', () => {
+      openModal({
+        title: 'افزودن حساب',
+        hint: 'نام بانک و شماره حساب مقصد را وارد کنید',
+        label1: 'نام بانک',
+        label2: 'شماره حساب',
+        done: (name, number) => {
+          const tag = document.createElement('span');
+          tag.className = 'bank-tag';
+          const label = document.createTextNode(name + ' ');
+          const num = document.createElement('span');
+          num.className = 'num';
+          num.textContent = toFa(digits(number));
+          const close = document.createElement('i');
+          close.className = 'fas fa-xmark';
+          close.setAttribute('data-remove-bank', '');
+          tag.append(label, num, close);
+          bankList.appendChild(tag);
+          bindRemove(close);
+          toast('حساب اضافه شد');
+        }
+      });
+    });
+
+    const posSelect = $('posSelect');
+    let posCount = 3;
+
+    $('addPosBtn').addEventListener('click', () => {
+      openModal({
+        title: 'افزودن کارتخوان',
+        hint: 'نام دستگاه جدید را بنویسید',
+        label1: 'نام کارتخوان',
+        value1: `کارتخوان شماره ${toFa(posCount + 1)}`,
+        done: name => {
+          posCount++;
+          addSelectOption(posSelect, `pos-${posCount}`, name);
+          toast('کارتخوان اضافه شد');
+        }
+      });
+    });
+
+    cardNumber.addEventListener('input', function () {
+      const raw = digits(this.value).slice(0, 16);
+      this.value = toFa(raw.replace(/(.{4})(?=.)/g, '$1 '));
+    });
+
+    /* ---------- mobile summary sheet ---------- */
+    const sheetBtn = $('sheetBtn');
+
+    function openSheet() {
+      sheetHost.appendChild(receipt);
+      scrim.classList.add('show');
+      sheet.classList.add('show');
+    }
+
+    function closeSheet() {
+      sheet.classList.remove('show');
+      if (!modal.classList.contains('show')) scrim.classList.remove('show');
+      setTimeout(() => {
+        if (!sheet.classList.contains('show')) stickyHost.prepend(receipt);
+      }, 440);
+    }
+
+    sheetBtn.addEventListener('click', () => {
+      if (sheet.classList.contains('show')) closeSheet();
+      else openSheet();
+    });
+
+    scrim.addEventListener('click', () => {
+      if (modal.classList.contains('show')) closeModal();
+      if (sheet.classList.contains('show')) closeSheet();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        if (modal.classList.contains('show')) closeModal();
+        else if (sheet.classList.contains('show')) closeSheet();
+      }
+      if (event.key === 'Enter' && modal.classList.contains('show')) {
+        event.preventDefault();
+        $('modalOk').click();
+      }
+      if (event.altKey && (event.key === 'n' || event.key === 'ن')) {
+        event.preventDefault();
+        addRow();
+      }
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        event.preventDefault();
+        submitForm();
+      }
+    });
+
+    /* ---------- submit / reset ---------- */
+    function resetForm() {
+      rows().forEach(row => row.remove());
+      syncMeta();
+
+      discountAmount.value = '';
+      discountPercent.value = '';
+      notes.value = '';
+      counter.textContent = '۰/۵۰۰';
+      counter.classList.remove('near');
+      cardNumber.value = '';
+
+      $('customerName').value = '';
+      $('saleNumber').value = '';
+      $('saleDate').value = shortDate();
+
+      segs.forEach((seg, i) => seg.classList.toggle('active', i === 0));
+      moveGlider();
+
+      const first = document.querySelector('.pay-opt input');
+      if (first) {
+        first.checked = true;
+        payOpts.forEach(o => o.classList.remove('active'));
+        first.closest('.pay-opt').classList.add('active');
+        showDetail('cash');
+      }
+
+      recalc();
+      toast('فرم پاک شد', 'warn');
+    }
+
+    function submitForm() {
+      if (!rows().length) {
+        toast('حداقل یک کالا اضافه کنید', 'bad');
+        return;
+      }
+
+      const customer = $('customerName');
+      if (!customer.value.trim()) {
+        toast('نام مشتری را وارد کنید', 'bad');
+        customer.focus();
+        const box = customer.closest('.control');
+        box.classList.add('shake');
+        setTimeout(() => box.classList.remove('shake'), 520);
+        return;
+      }
+
+      const missing = rows().find(row => !row.querySelector('.c-name input').value.trim());
+      if (missing) {
+        toast('نام همه کالاها را کامل کنید', 'bad');
+        missing.querySelector('.c-name input').focus();
+        return;
+      }
+
+      const zero = rows().find(row => lineTotal(row) <= 0);
+      if (zero) {
+        toast('قیمت همه کالاها را وارد کنید', 'bad');
+        zero.querySelector('[data-price]').focus();
+        return;
+      }
+
+      toast('فروش با موفقیت ثبت شد');
+    }
+
+    $('cancelBtn').addEventListener('click', resetForm);
+    $('submitBtn').addEventListener('click', submitForm);
+    $('dockSubmit').addEventListener('click', submitForm);
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        moveGlider();
+        if (window.innerWidth > 1080 && sheet.classList.contains('show')) closeSheet();
+      }, 120);
+    });
+
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveGlider);
+
+    /* ---------- init ---------- */
+    $('saleDate').value = shortDate();
+    document.querySelectorAll('.sel').forEach(buildSelect);
+
+    showDetail('cash');
+    syncMeta();
+    recalc();
+    moveGlider();
+  })();
+</script>
+</body>
+</html>

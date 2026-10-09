@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#8d43f5">
+  <title>سفارشات | داشبورد میلان</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('milan-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="orders">
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="app-shell">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="appSidebar">
+    <div class="brand">
+      <a class="brand-logo" href="index.html" aria-label="داشبورد میلان"><img src="assets/logo.svg" alt="MILAN Sport Wear"></a>
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="بستن منو">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <label class="sidebar-search">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" placeholder="جستجو…" aria-label="جستجو در پنل">
+    </label>
+
+    <nav class="main-nav" aria-label="منوی اصلی">
+      <a class="nav-item" href="index.html" data-page="dashboard"><i class="fas fa-th-large"></i><span>داشبورد</span></a>
+      <a class="nav-item" href="sales.html" data-page="sales"><i class="fas fa-chart-line"></i><span>فروش</span></a>
+      <a class="nav-item" href="products.html" data-page="products"><i class="fas fa-tshirt"></i><span>محصولات</span></a>
+      <a class="nav-item" href="orders.html" data-page="orders"><i class="fas fa-shopping-bag"></i><span>سفارشات</span></a>
+      <a class="nav-item" href="customers.html" data-page="customers"><i class="fas fa-users"></i><span>مشتریان</span></a>
+      <a class="nav-item" href="reports.html" data-page="reports"><i class="fas fa-chart-pie"></i><span>گزارشات</span></a>
+      <a class="nav-item" href="empty.html" data-page="empty"><i class="fas fa-boxes-stacked"></i><span>انبار</span></a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="user-card">
+        <span class="user-avatar">
+          <img src="assets/avatar.svg" alt="">
+          <i class="avatar-status" aria-hidden="true"></i>
+        </span>
+        <span class="user-meta">
+          <strong>مدیر فروشگاه</strong>
+          <small id="todayLabel">امروز</small>
+        </span>
+      </div>
+      <div class="foot-social">
+        <span class="foot-credit">طراحی و توسعه <b>ConDev</b></span>
+        <span class="foot-actions">
+          <a class="foot-icon" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i class="fab fa-instagram"></i></a>
+          <a class="foot-icon" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="وب‌سایت ConDev" aria-label="وب‌سایت ConDev"><i class="fas fa-globe"></i></a>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content-area">
+      <div class="page">
+
+        <header class="topbar">
+          <div class="topbar-main">
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-controls="appSidebar" aria-expanded="false">
+              <i class="fas fa-bars"></i>
+            </button>
+            <span class="topbar-badge"><i class="fas fa-shopping-bag"></i></span>
+            <div class="topbar-text">
+              <h1>سفارشات</h1>
+              <p>مدیریت سفارشات فروشگاه</p>
+            </div>
+          </div>
+          <div class="topbar-side">
+            <span class="pill"><i class="far fa-calendar"></i><span class="num" id="todayPill">امروز</span></span>
+            <a class="icon-btn notification" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i>۳</i><i class="fas fa-bell"></i></a>
+            <a class="btn btn-solid" href="sales.html"><i class="fas fa-plus"></i><span>ثبت سفارش</span></a>
+            <button class="icon-btn theme-btn" id="themeBtn" type="button" data-theme-toggle data-tip="تغییر پوسته" aria-label="تغییر پوسته" aria-pressed="false">
+              <i class="fas fa-moon i-moon"></i>
+              <i class="fas fa-sun i-sun"></i>
+            </button>
+          </div>
+        </header>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">
+              <span class="dot-icon gold"><i class="fas fa-shopping-bag"></i></span>
+              <div>
+                <h2>لیست سفارشات</h2>
+                <p>۴۲ سفارش ثبت شده در فروشگاه</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools">
+            <div class="tools-left">
+              <a class="tool-button" href="https://www.condev.ir/" target="_blank" rel="noopener"><i class="fas fa-filter"></i> فیلتر</a>
+              <a class="tool-button" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener">وضعیت <i class="fas fa-chevron-down"></i></a>
+            </div>
+            <div class="tools-right">
+              <label class="search-box">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" placeholder="جستجو در سفارشات…" aria-label="جستجو در سفارشات">
+              </label>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>شماره</th>
+                  <th>مشتری</th>
+                  <th>نوع سفارش</th>
+                  <th>نوع خرید</th>
+                  <th>تاریخ</th>
+                  <th>مبلغ</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۲۴</td>
+                  <td data-label="مشتری">رضا کریمی</td>
+                  <td data-label="نوع سفارش"><span class="tag sell"><i class="fas fa-arrow-up"></i>فروش</span></td>
+                  <td data-label="نوع خرید"><span class="tag online"><i class="fas fa-globe"></i>آنلاین</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۱۴</td>
+                  <td data-label="مبلغ" class="num">۷۸۹,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۲۳</td>
+                  <td data-label="مشتری">سارا محمدی</td>
+                  <td data-label="نوع سفارش"><span class="tag buy"><i class="fas fa-arrow-down"></i>خرید</span></td>
+                  <td data-label="نوع خرید"><span class="tag offline"><i class="fas fa-store"></i>حضوری</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۱۳</td>
+                  <td data-label="مبلغ" class="num">۲,۱۹۰,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۲۲</td>
+                  <td data-label="مشتری">علی رضایی</td>
+                  <td data-label="نوع سفارش"><span class="tag sell"><i class="fas fa-arrow-up"></i>فروش</span></td>
+                  <td data-label="نوع خرید"><span class="tag online"><i class="fas fa-globe"></i>آنلاین</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۱۲</td>
+                  <td data-label="مبلغ" class="num">۹۸۹,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۲۱</td>
+                  <td data-label="مشتری">مهسا حسینی</td>
+                  <td data-label="نوع سفارش"><span class="tag buy"><i class="fas fa-arrow-down"></i>خرید</span></td>
+                  <td data-label="نوع خرید"><span class="tag online"><i class="fas fa-globe"></i>آنلاین</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۱۱</td>
+                  <td data-label="مبلغ" class="num">۱,۷۵۰,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۲۰</td>
+                  <td data-label="مشتری">امیر قاسمی</td>
+                  <td data-label="نوع سفارش"><span class="tag sell"><i class="fas fa-arrow-up"></i>فروش</span></td>
+                  <td data-label="نوع خرید"><span class="tag offline"><i class="fas fa-store"></i>حضوری</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۱۰</td>
+                  <td data-label="مبلغ" class="num">۱,۲۵۰,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۱۹</td>
+                  <td data-label="مشتری">مریم نوری</td>
+                  <td data-label="نوع سفارش"><span class="tag buy"><i class="fas fa-arrow-down"></i>خرید</span></td>
+                  <td data-label="نوع خرید"><span class="tag online"><i class="fas fa-globe"></i>آنلاین</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۰۹</td>
+                  <td data-label="مبلغ" class="num">۲۹۹,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="شماره" class="num">#۱۰۱۸</td>
+                  <td data-label="مشتری">حسین عزیزی</td>
+                  <td data-label="نوع سفارش"><span class="tag sell"><i class="fas fa-arrow-up"></i>فروش</span></td>
+                  <td data-label="نوع خرید"><span class="tag offline"><i class="fas fa-store"></i>حضوری</span></td>
+                  <td data-label="تاریخ" class="num">۱۴۰۴/۰۲/۰۸</td>
+                  <td data-label="مبلغ" class="num">۸۹۹,۰۰۰</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده جزئیات سفارش"><i class="far fa-eye"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <div class="pagination">
+              <a class="page-arrow" href="https://www.condev.ir/" target="_blank" rel="noopener" aria-label="صفحه قبل"><i class="fas fa-chevron-right"></i></a>
+              <a class="page-number active num" href="https://www.condev.ir/" target="_blank" rel="noopener" aria-current="page">۱</a>
+              <a class="page-number num" href="https://www.condev.ir/" target="_blank" rel="noopener">۲</a>
+              <a class="page-number num" href="https://www.condev.ir/" target="_blank" rel="noopener">۳</a>
+              <span class="page-number plain num">…</span>
+              <a class="page-number num" href="https://www.condev.ir/" target="_blank" rel="noopener">۸</a>
+              <a class="page-arrow" href="https://www.condev.ir/" target="_blank" rel="noopener" aria-label="صفحه بعد"><i class="fas fa-chevron-left"></i></a>
+            </div>
+            <div class="footer-center">نمایش ۱ تا ۷ از ۴۲ سفارش</div>
+            <a class="per-page" href="https://www.condev.ir/" target="_blank" rel="noopener">
+              <span>نمایش در صفحه:</span>
+              <strong class="num">۷</strong>
+              <i class="fas fa-chevron-down"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="vendor/js/app.js"></script>
+</body>
+</html>

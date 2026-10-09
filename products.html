@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#8d43f5">
+  <title>محصولات | داشبورد میلان</title>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('milan-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="products">
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="app-shell">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="appSidebar">
+    <div class="brand">
+      <a class="brand-logo" href="index.html" aria-label="داشبورد میلان"><img src="assets/logo.svg" alt="MILAN Sport Wear"></a>
+      <button class="sidebar-close" id="sidebarClose" type="button" aria-label="بستن منو">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <label class="sidebar-search">
+      <i class="fas fa-magnifying-glass"></i>
+      <input type="text" placeholder="جستجو…" aria-label="جستجو در پنل">
+    </label>
+
+    <nav class="main-nav" aria-label="منوی اصلی">
+      <a class="nav-item" href="index.html" data-page="dashboard"><i class="fas fa-th-large"></i><span>داشبورد</span></a>
+      <a class="nav-item" href="sales.html" data-page="sales"><i class="fas fa-chart-line"></i><span>فروش</span></a>
+      <a class="nav-item" href="products.html" data-page="products"><i class="fas fa-tshirt"></i><span>محصولات</span></a>
+      <a class="nav-item" href="orders.html" data-page="orders"><i class="fas fa-shopping-bag"></i><span>سفارشات</span></a>
+      <a class="nav-item" href="customers.html" data-page="customers"><i class="fas fa-users"></i><span>مشتریان</span></a>
+      <a class="nav-item" href="reports.html" data-page="reports"><i class="fas fa-chart-pie"></i><span>گزارشات</span></a>
+      <a class="nav-item" href="empty.html" data-page="empty"><i class="fas fa-boxes-stacked"></i><span>انبار</span></a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="user-card">
+        <span class="user-avatar">
+          <img src="assets/avatar.svg" alt="">
+          <i class="avatar-status" aria-hidden="true"></i>
+        </span>
+        <span class="user-meta">
+          <strong>مدیر فروشگاه</strong>
+          <small id="todayLabel">امروز</small>
+        </span>
+      </div>
+      <div class="foot-social">
+        <span class="foot-credit">طراحی و توسعه <b>ConDev</b></span>
+        <span class="foot-actions">
+          <a class="foot-icon" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i class="fab fa-instagram"></i></a>
+          <a class="foot-icon" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="وب‌سایت ConDev" aria-label="وب‌سایت ConDev"><i class="fas fa-globe"></i></a>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content-area">
+      <div class="page">
+
+        <header class="topbar">
+          <div class="topbar-main">
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-controls="appSidebar" aria-expanded="false">
+              <i class="fas fa-bars"></i>
+            </button>
+            <span class="topbar-badge"><i class="fas fa-tshirt"></i></span>
+            <div class="topbar-text">
+              <h1>محصولات</h1>
+              <p>مدیریت محصولات فروشگاه</p>
+            </div>
+          </div>
+          <div class="topbar-side">
+            <span class="pill"><i class="far fa-calendar"></i><span class="num" id="todayPill">امروز</span></span>
+            <a class="icon-btn notification" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="اینستاگرام ConDev" aria-label="اینستاگرام ConDev"><i>۳</i><i class="fas fa-bell"></i></a>
+            <a class="btn btn-solid" href="https://www.condev.ir/" target="_blank" rel="noopener"><i class="fas fa-plus"></i><span>افزودن محصول</span></a>
+            <button class="icon-btn theme-btn" id="themeBtn" type="button" data-theme-toggle data-tip="تغییر پوسته" aria-label="تغییر پوسته" aria-pressed="false">
+              <i class="fas fa-moon i-moon"></i>
+              <i class="fas fa-sun i-sun"></i>
+            </button>
+          </div>
+        </header>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">
+              <span class="dot-icon"><i class="fas fa-bag-shopping"></i></span>
+              <div>
+                <h2>لیست محصولات</h2>
+                <p>۵۶ محصول فعال در فروشگاه</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools">
+            <div class="tools-left">
+              <a class="tool-button" href="https://www.condev.ir/" target="_blank" rel="noopener"><i class="fas fa-filter"></i> فیلتر</a>
+              <a class="tool-button" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener">دسته بندی <i class="fas fa-chevron-down"></i></a>
+            </div>
+            <div class="tools-right">
+              <label class="search-box">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" placeholder="جستجو در محصولات…" aria-label="جستجو در محصولات">
+              </label>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>نام محصول</th>
+                  <th>دسته بندی</th>
+                  <th>موجودی <i class="fas fa-arrow-down-short-wide sort-ico"></i></th>
+                  <th>قیمت</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="نام محصول">تی شرت ورزشی مردانه</td>
+                  <td data-label="دسته بندی"><span class="tag clothes"><i class="fas fa-shirt"></i>لباس</span></td>
+                  <td data-label="موجودی"><span class="tag stock num">۱۲۵ عدد</span></td>
+                  <td data-label="قیمت" class="num">۷۸۹,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="نام محصول">شلوار ورزشی زنانه</td>
+                  <td data-label="دسته بندی"><span class="tag clothes"><i class="fas fa-shirt"></i>لباس</span></td>
+                  <td data-label="موجودی"><span class="tag stock num">۸۶ عدد</span></td>
+                  <td data-label="قیمت" class="num">۱,۲۵۰,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="نام محصول">کتانی رانینگ مردانه</td>
+                  <td data-label="دسته بندی"><span class="tag shoes"><i class="fas fa-shoe-prints"></i>کفش</span></td>
+                  <td data-label="موجودی"><span class="tag warn num">۴۲ عدد</span></td>
+                  <td data-label="قیمت" class="num">۲,۱۹۰,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="نام محصول">سویشرت زیپ دار</td>
+                  <td data-label="دسته بندی"><span class="tag clothes"><i class="fas fa-shirt"></i>لباس</span></td>
+                  <td data-label="موجودی"><span class="tag warn num">۳۷ عدد</span></td>
+                  <td data-label="قیمت" class="num">۹۸۹,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="نام محصول">کوله پشتی ورزشی</td>
+                  <td data-label="دسته بندی"><span class="tag bag"><i class="fas fa-bag-shopping"></i>کیف</span></td>
+                  <td data-label="موجودی"><span class="tag warn num">۳۳ عدد</span></td>
+                  <td data-label="قیمت" class="num">۱,۷۵۰,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="نام محصول">شلوارک ورزشی</td>
+                  <td data-label="دسته بندی"><span class="tag clothes"><i class="fas fa-shirt"></i>لباس</span></td>
+                  <td data-label="موجودی"><span class="tag stock num">۶۹ عدد</span></td>
+                  <td data-label="قیمت" class="num">۸۹۹,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="نام محصول">جوراب ورزشی</td>
+                  <td data-label="دسته بندی"><span class="tag accessory"><i class="fas fa-tag"></i>اکسسوری</span></td>
+                  <td data-label="موجودی"><span class="tag stock num">۱۵۰ عدد</span></td>
+                  <td data-label="قیمت" class="num">۲۹۹,۰۰۰ تومان</td>
+                  <td data-label="عملیات">
+                    <div class="actions">
+                      <a class="action-btn action-view" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="مشاهده محصول"><i class="far fa-eye"></i></a>
+                      <a class="action-btn action-edit" href="https://www.instagram.com/con.dev" target="_blank" rel="noopener" data-tip="ویرایش محصول"><i class="fas fa-pen"></i></a>
+                      <a class="action-btn action-delete" href="https://www.condev.ir/" target="_blank" rel="noopener" data-tip="حذف محصول"><i class="far fa-trash-can"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <div class="pagination">
+              <a class="page-arrow" href="https://www.condev.ir/" target="_blank" rel="noopener" aria-label="صفحه قبل"><i class="fas fa-chevron-right"></i></a>
+              <a class="page-number active num" href="https://www.condev.ir/" target="_blank" rel="noopener" aria-current="page">۱</a>
+              <a class="page-number num" href="https://www.condev.ir/" target="_blank" rel="noopener">۲</a>
+              <a class="page-number num" href="https://www.condev.ir/" target="_blank" rel="noopener">۳</a>
+              <span class="page-number plain num">…</span>
+              <a class="page-number num" href="https://www.condev.ir/" target="_blank" rel="noopener">۸</a>
+              <a class="page-arrow" href="https://www.condev.ir/" target="_blank" rel="noopener" aria-label="صفحه بعد"><i class="fas fa-chevron-left"></i></a>
+            </div>
+            <div class="footer-center">نمایش ۱ تا ۷ از ۵۶ محصول</div>
+            <a class="per-page" href="https://www.condev.ir/" target="_blank" rel="noopener">
+              <span>نمایش در صفحه:</span>
+              <strong class="num">۷</strong>
+              <i class="fas fa-chevron-down"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="vendor/js/app.js"></script>
+</body>
+</html>
