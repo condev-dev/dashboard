@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Milan">
+  <title>Milan</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c1fe0"/>
+      <stop offset=".55" stop-color="#8d43f5"/>
+      <stop offset="1" stop-color="#ab72ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8.96" fill="url(#g)"/>
+  <text x="16" y="22.8" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="19" font-weight="900" fill="#ffffff">M</text>
+</svg>

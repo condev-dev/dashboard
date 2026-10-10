@@ -1,0 +1,5 @@
+# robots.txt — https://dashboard.condev.ir/
+User-agent: *
+Allow: /
+
+Sitemap: https://dashboard.condev.ir/sitemap.xml
